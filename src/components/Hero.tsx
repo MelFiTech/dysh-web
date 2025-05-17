@@ -1,12 +1,20 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Button from "@/components/Button";
 import { motion } from "framer-motion";
 import Ticker from './Ticker';
+import WaitlistModal from './WaitlistModal';
 
 export default function Hero() {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleWaitlistSubmit = (email: string) => {
+    // You can handle the submitted email here (e.g., send to API)
+    setModalOpen(false);
+  };
+
   return (
     <section className="relative flex flex-col items-center justify-between min-h-[calc(100vh-96px)] h-[calc(100vh-96px)] w-full bg-[#FCFCF6] overflow-hidden">
       {/* Subheadline */}
@@ -25,11 +33,12 @@ export default function Hero() {
           <p className="text-gray-500 text-center max-w-xl mb-8 font-satoshi text-xl mx-auto">
             Explore dishes from Italy, Asia, Africa & more. Breakfast, lunch, or dinner, all tailored to your ingredients.
           </p>
-          <Button className="mb-0">
+          <Button className="mb-0" onClick={() => setModalOpen(true)}>
             Join waitlist
           </Button>
         </motion.div>
       </div>
+      <WaitlistModal open={modalOpen} onClose={() => setModalOpen(false)} onSubmit={handleWaitlistSubmit} />
       {/* Bottom Gradient Overlay */}
       <div className="pointer-events-none absolute left-0 right-0 bottom-0 h-96 z-10" style={{background: 'linear-gradient(to top, #FCFCF6 20%, rgba(252, 252, 246, 0.8) 50%, transparent 100%)'}} />
       {/* Images Row for desktop only */}
