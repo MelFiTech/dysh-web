@@ -46,7 +46,7 @@ export default function WaitlistModal({ open, onClose, onSubmit }: WaitlistModal
       setShowSuccess(true);
       setEmail("");
       onSubmit(email);
-    } catch (err) {
+    } catch {
       setToast({ type: 'error', message: 'Something went wrong. Please try again.' });
     } finally {
       setLoading(false);

@@ -10,7 +10,7 @@ import WaitlistModal from './WaitlistModal';
 export default function Hero() {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const handleWaitlistSubmit = (email: string) => {
+  const handleWaitlistSubmit = () => {
     // You can handle the submitted email here (e.g., send to API)
     setModalOpen(false);
   };

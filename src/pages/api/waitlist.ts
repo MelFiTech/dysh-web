@@ -18,7 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(500).json({ error: 'Failed to submit to Formspark' });
     }
     return res.status(200).json({ success: true });
-  } catch (err) {
+  } catch {
     return res.status(500).json({ error: 'Server error' });
   }
 } 
